@@ -10,7 +10,7 @@ public class Cooldown
 
     public bool isCoolingDown => Time.time < nextFireTime;
     public void StartCooldown() => nextFireTime = Time.time + cooldownTime;
-
+    public void SetCooldownTime(float cooldownTime) => this.cooldownTime = cooldownTime; 
     public Cooldown (float cooldownTime)
     {
         this.cooldownTime = cooldownTime;
