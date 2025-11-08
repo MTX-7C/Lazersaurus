@@ -373,17 +373,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3481307342947329140, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
+      propertyPath: bulletForce
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 7904317231767701709, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
       propertyPath: m_Name
       value: Time Car
-      objectReference: {fileID: 0}
-    - target: {fileID: 7954721428401299679, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -5862538316765099093, guid: 0f03e727930679b48a380a336d19008c, type: 3}
-    - target: {fileID: 7954721428401299679, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9029257573492304652, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
       propertyPath: m_LocalPosition.x
