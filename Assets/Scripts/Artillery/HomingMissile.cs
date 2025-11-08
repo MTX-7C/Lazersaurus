@@ -8,6 +8,8 @@ public class HomingMissile : MonoBehaviour
     Rigidbody2D rb;
     public float missileSpeed;
     public GameObject target;
+
+    public float despawnTime = 5;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,6 +25,13 @@ public class HomingMissile : MonoBehaviour
         rb.linearVelocity = transform.right * missileSpeed;
         Debug.Log(rb.linearVelocity);
         AimAtTarget();
+
+        despawnTime -= Time.deltaTime;
+
+        if (despawnTime < 0)
+        {
+            Explode();
+        }
     }
 
     public void AimAtTarget()
@@ -46,5 +55,10 @@ public class HomingMissile : MonoBehaviour
                 target = targets[i];
             }
         }
+    }
+
+    public void Explode()
+    {
+        Destroy(gameObject);
     }
 }

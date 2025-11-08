@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GroundCheck : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 6)
+        if (other.gameObject.tag != "Player")
         {
             player.isGrounded = true;
             gameObjects.Add(other.gameObject);
@@ -22,7 +21,7 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.layer == 6)
+        if (other.gameObject.tag != "Player")
         {
             gameObjects.Remove(other.gameObject);
         }
