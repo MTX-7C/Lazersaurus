@@ -37,6 +37,10 @@ public class PlayerInputManager : MonoBehaviour
         if (value.ReadValue<Vector2>().x != 0)
         {
             player.facedDirection = value.ReadValue<Vector2>().x;
+            player.animator.SetBool("moving", true);
+        } else
+        {
+            player.animator.SetBool("moving", false);
         }
     }
 

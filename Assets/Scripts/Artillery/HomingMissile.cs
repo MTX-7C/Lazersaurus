@@ -8,14 +8,19 @@ public class HomingMissile : MonoBehaviour
     Rigidbody2D rb;
     public float missileSpeed;
     public GameObject target;
+    public GameObject explosion;
 
     public float despawnTime = 5;
+
+    public AudioClip spawnSound;
+    public AudioClip explosionSound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         targets = GameObject.FindGameObjectsWithTag("Enemy");
         Player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
+        AudioSource.PlayClipAtPoint(spawnSound, transform.position);
     }
 
     // Update is called once per frame
@@ -59,6 +64,15 @@ public class HomingMissile : MonoBehaviour
 
     public void Explode()
     {
+        Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Explode();
+        }
     }
 }
