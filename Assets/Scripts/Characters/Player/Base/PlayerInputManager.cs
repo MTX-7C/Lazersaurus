@@ -50,7 +50,7 @@ public class PlayerInputManager : MonoBehaviour
 
     public void On_Glide(InputAction.CallbackContext value)
     {
-        player.isGliding = value.performed;
+        //player.isGliding = value.performed;
     }
 
     public void On_Dash(InputAction.CallbackContext value)
