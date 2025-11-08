@@ -15,6 +15,8 @@ public class Player : MonoBehaviour, IDamageable
 
     public Rigidbody2D rb;
 
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
 
     #region Modifiers
     public float facedDirection = 1;
@@ -79,7 +81,6 @@ public class Player : MonoBehaviour, IDamageable
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
-
         stateMachine.Initialize(groundedState);
     }
 
@@ -88,7 +89,9 @@ public class Player : MonoBehaviour, IDamageable
         stateMachine.currentPlayerState.FrameUpdate();
 
         demoText.text = "Current State: " + stateMachine.currentPlayerState.GetType().Name;
+        spriteRenderer.gameObject.transform.localScale = new Vector3(facedDirection, 1, 1);
     }
+
 
     private void FixedUpdate()
     {
