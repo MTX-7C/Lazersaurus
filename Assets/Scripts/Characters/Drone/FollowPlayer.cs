@@ -36,10 +36,10 @@ public class FollowPlayer : MonoBehaviour
                 cuteOffset = new Vector3(Random.Range(-1f, 4f), Random.Range(-1f, 2f), 0);
                 if (transform.position.x - target.position.x > cuteOffset.x)
                 {
-                    GetComponent<SpriteRenderer>().flipX = true;
+                    transform.localScale = new Vector3(-1, 1, 1);
                 } else
                 {
-                    GetComponent<SpriteRenderer>().flipX = false;
+                    transform.localScale = Vector3.one;
                 }
             }
         } else
@@ -47,11 +47,11 @@ public class FollowPlayer : MonoBehaviour
             cuteOffset = Vector3.zero;
             if (transform.position.x - target.position.x > cuteOffset.x)
             {
-                GetComponent<SpriteRenderer>().flipX = true;
+                transform.localScale = new Vector3(-1, 1, 1);
             }
             else
             {
-                GetComponent<SpriteRenderer>().flipX = false;
+                transform.localScale = Vector3.one;
             }
         }
     }
