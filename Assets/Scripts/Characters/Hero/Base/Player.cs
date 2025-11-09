@@ -124,6 +124,8 @@ public class Player : MonoBehaviour, IDamageable
     public void TriggerDeath()
     {
         Debug.Log("YOU DIED");
+        animator.SetTrigger("death");
+        invincible = true;
     }
 
     public float CalculateJumpVelocity()

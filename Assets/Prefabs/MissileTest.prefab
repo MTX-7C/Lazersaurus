@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 3066146550215428956}
   - component: {fileID: 7530078953641596888}
   - component: {fileID: 7364671510490309086}
+  - component: {fileID: 8374397884315781708}
   m_Layer: 0
   m_Name: MissileTest
   m_TagString: Untagged
@@ -223,7 +224,7 @@ MonoBehaviour:
   despawnTime: 5
   spawnSound: {fileID: 8300000, guid: 79a8031036fdb5441822c86a8630b3d1, type: 3}
   explosionSound: {fileID: 8300000, guid: 17e2e18f58d484292afebd263b8a9f67, type: 3}
-  randomTarget: 1
+  randomTarget: 0
 --- !u!61 &6268329902055558476
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -510,6 +511,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8374397884315781708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5527971634694495495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa24eba610db3e04ea1af445e142dc7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageSound: {fileID: 8300000, guid: 85020549641fa452d9136ac2fc852efd, type: 3}
+  damage: 20
 --- !u!1001 &4173158831184709201
 PrefabInstance:
   m_ObjectHideFlags: 0

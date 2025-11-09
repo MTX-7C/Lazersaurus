@@ -37,7 +37,6 @@ public class HomingMissile : MonoBehaviour
             SelectClosestTarget();
         } 
         rb.linearVelocity = transform.right * missileSpeed;
-        Debug.Log(rb.linearVelocity);
         AimAtTarget();
 
         despawnTime -= Time.deltaTime;
