@@ -34,10 +34,25 @@ public class FollowPlayer : MonoBehaviour
             {
                 moveCooldown.StartCooldown();
                 cuteOffset = new Vector3(Random.Range(-1f, 4f), Random.Range(-1f, 2f), 0);
+                if (transform.position.x - target.position.x > cuteOffset.x)
+                {
+                    GetComponent<SpriteRenderer>().flipX = true;
+                } else
+                {
+                    GetComponent<SpriteRenderer>().flipX = false;
+                }
             }
         } else
         {
             cuteOffset = Vector3.zero;
+            if (transform.position.x - target.position.x > cuteOffset.x)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
         }
     }
 
