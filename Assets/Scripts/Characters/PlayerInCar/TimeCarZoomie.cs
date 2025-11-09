@@ -2,29 +2,50 @@ using UnityEngine;
 
 public class TimeCarZoomie : MonoBehaviour
 {
-    public float MaximumSpeedRight = 200f;
+    public float MinimumSpeed = 150f;
+    public float DefaultSpeed = 300f;
+    public float MaximumSpeed = 600f;
 
-    private Rigidbody2D rb;
+    public WheelJoint2D frontWheel;
+    public WheelJoint2D backWheel;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    public Rigidbody2D rb;
+    public float jumpForce = 200f;
 
-    void FixedUpdate()
-    {
-        // Clamp the horizontal speed.
-        if (rb.linearVelocityX > MaximumSpeedRight)
-        {
-            rb.linearVelocityX = MaximumSpeedRight;
-        }
-    }
-    // Update is called once per frame
+
     void Update()
     {
-        // move forward automagically
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            // forward boost
+            AdjustWheelSpeed(backWheel, MaximumSpeed);
+            AdjustWheelSpeed(frontWheel, MaximumSpeed);
+        }
+        else if (Input.GetAxis("Horizontal") < 0)
+        {
+            // brakes!
+            AdjustWheelSpeed(backWheel, MinimumSpeed);
+            AdjustWheelSpeed(frontWheel, MinimumSpeed);
+        }
+        else
+        {
+            // just cruisin
+            AdjustWheelSpeed(backWheel, DefaultSpeed);
+            AdjustWheelSpeed(frontWheel, DefaultSpeed);
+        }
 
-        // jump and stuff
-
+        if (Input.GetButtonDown("Jump"))
+        {
+            rb.AddForce(transform.up * jumpForce);
+        }
     }
+
+
+    private void AdjustWheelSpeed(WheelJoint2D targetWheelJoint, float targetSpeed)
+    {
+        JointMotor2D motor = targetWheelJoint.motor; // Get the current motor settings
+        motor.motorSpeed = targetSpeed; // Modify the speed
+        targetWheelJoint.motor = motor; // Assign the updated motor back
+    }
+    
 }
