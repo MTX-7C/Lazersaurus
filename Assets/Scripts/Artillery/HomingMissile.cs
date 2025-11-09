@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class HomingMissile : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class HomingMissile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RemoveNullTargets();
         if (!randomTarget)
         {
             SelectClosestTarget();
@@ -46,7 +48,27 @@ public class HomingMissile : MonoBehaviour
             Explode();
         }
     }
+    public void RemoveNullTargets()
+    {
 
+        List<int> livingIndexes = new List<int>();
+        for (int i = 0; i < targets.Length; i++)
+        {
+            if (targets[i] != null)
+            {
+                livingIndexes.Add(i);
+
+            } else
+            {
+                Explode();
+            }
+        }
+        GameObject[] newTargets = new GameObject[livingIndexes.Count];
+        for (int i = 0; i < livingIndexes.Count; i++)
+        {
+            newTargets[i] = targets[livingIndexes[i]];
+        }
+    }
     public void AimAtTarget()
     {
         float desiredAngle;
