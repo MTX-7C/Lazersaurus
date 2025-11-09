@@ -10,9 +10,11 @@ public class PlayerInputManager : MonoBehaviour
 
     Controls controls;
     public Player player;
+    AttackManager attackManager;
     // Start is called before the first frame update
     void Start()
     {
+        attackManager = GetComponent<AttackManager>();
         player = GetComponent<Player>();
 
         controls = new Controls();
@@ -29,6 +31,9 @@ public class PlayerInputManager : MonoBehaviour
 
         controls.Gameplay.Dash.performed += ctx => On_Dash(ctx);
         controls.Gameplay.Dash.canceled += ctx => On_Dash(ctx);
+
+        controls.Gameplay.MeleeAttack.performed += ctx => On_Attack(ctx);
+        controls.Gameplay.MeleeAttack.canceled += ctx => On_Attack(ctx);
     }
 
     public void On_Move(InputAction.CallbackContext value)
@@ -69,5 +74,13 @@ public class PlayerInputManager : MonoBehaviour
             }
         }
         Debug.Log("Dashes Remaining: " + player.dashCount);
+    }
+
+    public void On_Attack(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            attackManager.Attack();
+        }
     }
 }
