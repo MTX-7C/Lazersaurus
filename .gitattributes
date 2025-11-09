@@ -1,0 +1,2 @@
+*.HDR filter=lfs diff=lfs merge=lfs -text
+Building-02_albedo.png filter=lfs diff=lfs merge=lfs -text
