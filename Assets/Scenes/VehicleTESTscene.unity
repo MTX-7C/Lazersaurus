@@ -119,29 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &994230286 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7904317231767701709, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
-  m_PrefabInstance: {fileID: 7198208325645614109}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &994230289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9029257573492304652, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
   m_PrefabInstance: {fileID: 7198208325645614109}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &994230293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994230286}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bcf4e7ee1d352a40bb37f74993a6cdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaximumSpeedRight: 2
 --- !u!1 &1442732465
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,34 +419,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 480545500339465603, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 480545500339465603, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 480545500339465603, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3156516647594783303, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
-      propertyPath: m_Size.x
-      value: 7.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 3156516647594783303, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
-      propertyPath: m_Size.y
-      value: 1.7729225
-      objectReference: {fileID: 0}
-    - target: {fileID: 3156516647594783303, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.22853875
-      objectReference: {fileID: 0}
-    - target: {fileID: 3481307342947329140, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
-      propertyPath: bulletForce
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 7904317231767701709, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
       propertyPath: m_Name
       value: Time Car
@@ -512,10 +466,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7904317231767701709, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 994230293}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0f12099322d7c74d90f130deb10271d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
