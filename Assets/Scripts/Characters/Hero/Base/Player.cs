@@ -28,6 +28,8 @@ public class Player : MonoBehaviour, IDamageable
     public float dashSpeedMultiplier = 2;
     public int dashCount = 1;
     public float cayoteTime = 0.15f;
+    public bool rolling = false;
+    public float rollAcceleration = 1.5f;
     #endregion
 
     #region Cooldowns
@@ -53,6 +55,7 @@ public class Player : MonoBehaviour, IDamageable
     public AttackingState attackingState { get; set; }
 
     public PlayerDashState dashState { get; set; }
+    public RollingState rollingState { get; set; }
     #endregion
 
     #region Animation trigger handlers
@@ -78,6 +81,7 @@ public class Player : MonoBehaviour, IDamageable
         swimmingState = new PlayerSwimmingState(this, stateMachine);
         dashState = new PlayerDashState(this, stateMachine);
         attackingState = new AttackingState(this, stateMachine);
+        rollingState = new RollingState(this,stateMachine);
     }
 
     void Start()

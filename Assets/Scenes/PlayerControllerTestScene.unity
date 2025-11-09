@@ -1518,7 +1518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 674258067596578725, guid: ab023928a87ad804dbb37e2c4985238f, type: 3}
       propertyPath: volleyCooldownTime
-      value: 60
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 835457737525347413, guid: ab023928a87ad804dbb37e2c4985238f, type: 3}
       propertyPath: m_IsActive

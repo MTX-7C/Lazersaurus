@@ -34,12 +34,15 @@ public class PlayerInputManager : MonoBehaviour
 
         controls.Gameplay.MeleeAttack.performed += ctx => On_Attack(ctx);
         controls.Gameplay.MeleeAttack.canceled += ctx => On_Attack(ctx);
+
+        controls.Gameplay.Roll.performed += ctx => On_Roll(ctx);
+        controls.Gameplay.Roll.canceled += ctx => On_Roll(ctx);
     }
 
     public void On_Move(InputAction.CallbackContext value)
     {
         player.moveDirection = value.ReadValue<Vector2>();
-        if (value.ReadValue<Vector2>().x != 0)
+        if (value.ReadValue<Vector2>().x != 0 && (attackManager.attacking != true && !player.rolling))
         {
             player.facedDirection = value.ReadValue<Vector2>().x;
             player.animator.SetBool("moving", true);
@@ -81,6 +84,19 @@ public class PlayerInputManager : MonoBehaviour
         if (value.performed)
         {
             attackManager.Attack();
+        }
+    }
+
+    public void On_Roll(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            player.rolling = true;
+            player.stateMachine.ChangeState(player.rollingState);
+            player.animator.SetBool("rolling", player.rolling);
+        } else
+        {
+            player.rolling = false;
         }
     }
 }
