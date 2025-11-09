@@ -32,7 +32,7 @@ public class MissileSpawner : MonoBehaviour
     {
         while (missiles > 0)
         {
-            Instantiate(missile, transform.position, Quaternion.identity);
+            Instantiate(missile, transform.position, Quaternion.Euler(new Vector3(0, 0, Random.Range(-45, 45))));
             missiles--;
             yield return new WaitForSeconds(volleyTime / missilesPerVolley);
         }

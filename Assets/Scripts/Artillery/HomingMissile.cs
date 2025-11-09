@@ -14,6 +14,8 @@ public class HomingMissile : MonoBehaviour
 
     public AudioClip spawnSound;
     public AudioClip explosionSound;
+
+    public bool randomTarget = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,12 +23,19 @@ public class HomingMissile : MonoBehaviour
         Player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
         AudioSource.PlayClipAtPoint(spawnSound, transform.position);
+        if (randomTarget )
+        {
+            SelectRandomTarget();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        SelectTarget();
+        if (!randomTarget)
+        {
+            SelectClosestTarget();
+        } 
         rb.linearVelocity = transform.right * missileSpeed;
         Debug.Log(rb.linearVelocity);
         AimAtTarget();
@@ -45,10 +54,14 @@ public class HomingMissile : MonoBehaviour
         float jitterAmount = Random.Range(-10, 10);
         float x = 0;
         desiredAngle = Mathf.Atan2((target.transform.position.y - transform.position.y), (target.transform.position.x - transform.position.x)) * Mathf.Rad2Deg + jitterAmount;
-        transform.eulerAngles = new Vector3(0, 0, Mathf.SmoothDampAngle(transform.eulerAngles.z, desiredAngle, ref x, 0.04f));
+        transform.eulerAngles = new Vector3(0, 0, Mathf.SmoothDampAngle(transform.eulerAngles.z, desiredAngle, ref x, 0.07f));
+    }
+    public void SelectRandomTarget()
+    {
+        target = targets[Random.Range(0, targets.Length)];
     }
 
-    public void SelectTarget()
+    public void SelectClosestTarget()
     {
         Vector3 playerPos = Player.transform.position;
         float shortestDistance = float.MaxValue;

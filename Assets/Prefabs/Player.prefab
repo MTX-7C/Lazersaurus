@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1019429532631326994
 Transform:
   m_ObjectHideFlags: 0
@@ -174,6 +174,37 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   gameObjects: []
+--- !u!1 &5993135912114529373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3492674883728860131}
+  m_Layer: 0
+  m_Name: DroneFollowTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3492674883728860131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993135912114529373}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 426614226980184768}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6049789068784017438
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +239,7 @@ Transform:
   m_Children:
   - {fileID: 1019429532631326994}
   - {fileID: 3597483068381443817}
+  - {fileID: 3492674883728860131}
   m_Father: {fileID: 6533104631602438432}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4533728175901157950
@@ -313,7 +345,6 @@ GameObject:
   - component: {fileID: 1541863328827706775}
   - component: {fileID: 672562156332539500}
   - component: {fileID: 8838511276392484698}
-  - component: {fileID: 674258067596578725}
   - component: {fileID: 573088198080629218}
   m_Layer: 3
   m_Name: Player
@@ -430,6 +461,8 @@ MonoBehaviour:
   dashSpeedMultiplier: 4
   dashCount: 1
   cayoteTime: 0.15
+  rolling: 0
+  rollAcceleration: 1.5
   moveDirection: {x: 0, y: 0}
   isGrounded: 0
   isGliding: 0
@@ -446,22 +479,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
---- !u!114 &674258067596578725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7761899116052476956}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c6ec77cb5363546beaf9bf78c32423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missile: {fileID: 5527971634694495495, guid: bc4604de031be94499a2dab63729ba40, type: 3}
-  volleyCooldownTime: 0.5
-  missilesPerVolley: 5
-  volleyTime: 0.5
 --- !u!114 &573088198080629218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,7 +515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3597483068381443817
 Transform:
   m_ObjectHideFlags: 0
