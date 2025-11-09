@@ -18,6 +18,6 @@ public class PlayerStateMachine
         currentPlayerState.ExitState();
         currentPlayerState = newState;
         currentPlayerState.EnterState();
-        Debug.Log(newState.GetType().Name);
+        //Debug.Log(newState.GetType().Name);
     }
 }

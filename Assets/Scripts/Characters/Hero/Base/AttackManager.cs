@@ -9,11 +9,14 @@ public class AttackManager : MonoBehaviour
     public bool attackQueued = false;
     public int currentAttackIndex = 0;
     public bool comboFinished = false;
+
+    Player player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         comboTime = new Cooldown(0.1f);
         comboCooldown = new Cooldown(0.5f);
+        player = GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -32,6 +35,7 @@ public class AttackManager : MonoBehaviour
 
     public void Attack()
     {
+        
         if (!comboCooldown.isCoolingDown)
         {
             if (!attackQueued && attacking)
@@ -45,6 +49,8 @@ public class AttackManager : MonoBehaviour
             if (!attacking)
             {
                 GetComponent<Player>().animator.SetTrigger(attacks[currentAttackIndex]);
+                attacking = true;
+                EnterAttackingState();
             }
             
         }
@@ -55,6 +61,14 @@ public class AttackManager : MonoBehaviour
         if (attackQueued)
         {
             GetComponent<Player>().animator.SetTrigger(attacks[currentAttackIndex]);
+            attacking = true;
+            EnterAttackingState();
         }
+    }
+
+    void EnterAttackingState()
+    {
+        if (player.stateMachine.currentPlayerState == player.groundedState || player.stateMachine.currentPlayerState == player.jumpingState)
+        player.stateMachine.ChangeState(player.attackingState);
     }
 }
