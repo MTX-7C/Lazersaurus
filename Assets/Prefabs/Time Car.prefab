@@ -535,7 +535,7 @@ PrefabInstance:
       objectReference: {fileID: 2994303312232429522}
     - target: {fileID: 367445934442187749, guid: 0372d8de9577f5e41aa56e4bc66f2fee, type: 3}
       propertyPath: bulletForce
-      value: 3000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3027422093635049101, guid: 0372d8de9577f5e41aa56e4bc66f2fee, type: 3}
       propertyPath: m_Enabled
