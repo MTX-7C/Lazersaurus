@@ -37,12 +37,15 @@ public class PlayerInputManager : MonoBehaviour
 
         controls.Gameplay.Roll.performed += ctx => On_Roll(ctx);
         controls.Gameplay.Roll.canceled += ctx => On_Roll(ctx);
+
+        controls.Gameplay.Laser.performed += ctx => On_Laser(ctx);
+        controls.Gameplay.Laser.canceled += ctx => On_Laser(ctx);
     }
 
     public void On_Move(InputAction.CallbackContext value)
     {
         player.moveDirection = value.ReadValue<Vector2>();
-        if (value.ReadValue<Vector2>().x != 0 && (attackManager.attacking != true && !player.rolling))
+        if (value.ReadValue<Vector2>().x != 0 && (attackManager.attacking != true && !player.rolling && !player.laser))
         {
             player.facedDirection = value.ReadValue<Vector2>().x;
             player.animator.SetBool("moving", true);
@@ -89,7 +92,7 @@ public class PlayerInputManager : MonoBehaviour
 
     public void On_Roll(InputAction.CallbackContext value)
     {
-        if (value.performed)
+        if (value.performed && !attackManager.attacking)
         {
             player.rolling = true;
             player.stateMachine.ChangeState(player.rollingState);
@@ -97,6 +100,21 @@ public class PlayerInputManager : MonoBehaviour
         } else
         {
             player.rolling = false;
+        }
+    }
+
+    public void On_Laser(InputAction.CallbackContext value)
+    {
+        if (!attackManager.attacking && !player.rolling && value.performed) 
+        { 
+            player.laser = true;
+            player.animator.SetBool("laser", true);
+            player.stateMachine.ChangeState(player.laserState);
+        } else
+        {
+            player.laser = false;
+            player.animator.SetBool("laser", false);
+            player.stateMachine.ChangeState(player.groundedState);
         }
     }
 }

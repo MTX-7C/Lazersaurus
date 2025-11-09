@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missile: {fileID: 5527971634694495495, guid: bc4604de031be94499a2dab63729ba40, type: 3}
-  volleyCooldownTime: 2
-  missilesPerVolley: 5
+  volleyCooldownTime: 10
+  missilesPerVolley: 1
   volleyTime: 0.5
 --- !u!114 &7370065702609622975
 MonoBehaviour:

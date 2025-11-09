@@ -29,6 +29,7 @@ public class Player : MonoBehaviour, IDamageable
     public int dashCount = 1;
     public float cayoteTime = 0.15f;
     public bool rolling = false;
+    public bool laser = false;
     public float rollAcceleration = 1.5f;
     #endregion
 
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public PlayerDashState dashState { get; set; }
     public RollingState rollingState { get; set; }
+    public LaserState laserState { get; set; }
     #endregion
 
     #region Animation trigger handlers
@@ -82,6 +84,7 @@ public class Player : MonoBehaviour, IDamageable
         dashState = new PlayerDashState(this, stateMachine);
         attackingState = new AttackingState(this, stateMachine);
         rollingState = new RollingState(this,stateMachine);
+        laserState = new LaserState(this, stateMachine);
     }
 
     void Start()
