@@ -50,6 +50,8 @@ public class Player : MonoBehaviour, IDamageable
     public PlayerGlidingState glidingState { get; set; }
     public PlayerSwimmingState swimmingState { get; set; }
 
+    public AttackingState attackingState { get; set; }
+
     public PlayerDashState dashState { get; set; }
     #endregion
 
@@ -75,6 +77,7 @@ public class Player : MonoBehaviour, IDamageable
         glidingState = new PlayerGlidingState(this, stateMachine);
         swimmingState = new PlayerSwimmingState(this, stateMachine);
         dashState = new PlayerDashState(this, stateMachine);
+        attackingState = new AttackingState(this, stateMachine);
     }
 
     void Start()
